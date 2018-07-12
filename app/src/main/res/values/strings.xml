@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Terrigen</string>
+    <string name="receiver_name">Person</string>
+    <string name="sender_name">You</string>
+    <string name="speak_button">Tap to record voice</string>
+    <string name="send_message">Tap to send message</string>
+    <string name="conversation">Conversation</string>
+</resources>
