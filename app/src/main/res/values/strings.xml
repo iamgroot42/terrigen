@@ -5,4 +5,17 @@
     <string name="speak_button">Tap to record voice</string>
     <string name="send_message">Tap to send message</string>
     <string name="conversation">Conversation</string>
+    <array name="quick_responses">
+        <item>Yes</item>
+        <item>No</item>
+        <item>Maybe</item>
+        <item>Okay</item>
+        <item>What?</item>
+        <item>When?</item>
+        <item>Where?</item>
+        <item>Why?</item>
+        <item>How?</item>
+        <item>Hello</item>
+        <item>Bye</item>
+    </array>
 </resources>

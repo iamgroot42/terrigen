@@ -32,12 +32,27 @@
 
     </ScrollView>
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:measureAllChildren="false"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/responses_list"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <Button
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="@string/speak_button"
         android:textColor="@color/colorPrimaryDark"
-        android:onClick="obtainSpeechInput"/>
+        android:onClick="obtainSpeechInput"
+        android:textAllCaps="false"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -46,10 +61,11 @@
         android:inputType="textCapSentences"/>
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="@string/send_message"
         android:textColor="@color/colorPrimaryDark"
-        android:onClick="convertTextToSpeech"/>
+        android:onClick="convertTextToSpeech"
+        android:textAllCaps="false"/>
 
 </LinearLayout>

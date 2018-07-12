@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -47,8 +48,34 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 .inflate(R.layout.receiver_message, null);
         TextView senderMessageView = (TextView) ((LinearLayout) senderMessageLayout
                 .getChildAt(0)).getChildAt(0);
+        final ScrollView scrollWindow =  findViewById(R.id.scroll_window);
         senderMessageView.setText(message);
         messageScrollView.addView(senderMessageLayout);
+        scrollWindow.post(new Runnable() {
+            public void run() {
+                scrollWindow.fullScroll(View.FOCUS_DOWN);
+            }
+        });
+    }
+
+    private void addQuickResponses() {
+        String[] quickResponses = getResources().getStringArray(R.array.quick_responses);
+        LinearLayout quickResponsesLayout = findViewById(R.id.responses_list);
+        final MainActivity activity = this;
+        for (final String response : quickResponses) {
+            Button button = new Button(this);
+            button.setText(response);
+            button.setTextColor(getResources().getColor(R.color.purple));
+            button.setAllCaps(false);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    userInputTextbox.setText(response);
+                    activity.convertTextToSpeech(view);
+                }
+            });
+            quickResponsesLayout.addView(button);
+        }
     }
 
     @Override
@@ -57,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         Log.d(TAG, "Saved instance state" + savedInstanceState);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.addQuickResponses();
         messageScrollView = findViewById(R.id.messageWindow);
         textToSpeechEngine = new TextToSpeech(this, this);
     }
